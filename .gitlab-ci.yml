@@ -20,4 +20,4 @@ package and update jar:
     # - jarid=$(curl -X POST -H "Expect:" -F "jarfile=@./target/mysqlcdc-elasticsearch-1.0-SNAPSHOT.jar" $FLINK_CLUSTER/jars/upload  | jq -r '.filename' | awk -F/ '{print $NF}')
     # - echo $jarid
     - jarid="testjar"
-    - eval aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string $FLINK_MANAGER_SETTING
+    - eval aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string "$FLINK_MANAGER_SETTING"
