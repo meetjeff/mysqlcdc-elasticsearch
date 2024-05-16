@@ -21,6 +21,7 @@ package and update jar:
     # - echo $NEW_JARID
     # - UPDATED_FLINK_MANAGER_SETTING=$(echo $FLINK_MANAGER_SETTING | jq --arg new_jar_id "$NEW_JARID" '.flink_config.jar_id = $new_jar_id')
     # - aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string "$UPDATED_FLINK_MANAGER_SETTING"
+    - apt-get update && apt-get -y upgrade && apt-get install -y jq
     - NEW_JARID="testjar"
     - UPDATED_FLINK_MANAGER_SETTING=$(echo $FLINK_MANAGER_SETTING | jq --arg new_jar_id "$NEW_JARID" '.flink_config.jar_id = $new_jar_id')
     - echo $UPDATED_FLINK_MANAGER_SETTING
