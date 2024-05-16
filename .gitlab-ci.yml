@@ -17,12 +17,10 @@ package and update jar:
     #   ./aws/install
   script:
     # - mvn clean package
-    # - jarid=$(curl -X POST -H "Expect:" -F "jarfile=@./target/mysqlcdc-elasticsearch-1.0-SNAPSHOT.jar" $FLINK_CLUSTER/jars/upload  | jq -r '.filename' | awk -F/ '{print $NF}')
-    # - echo $jarid
-    # - eval aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string "$FLINK_MANAGER_SETTING"
-    - jarid="testjar"
-    - echo $jarid
-    - eval echo $FLINK_MANAGER_SETTING
-    - eval echo "$FLINK_MANAGER_SETTING"
-    - eval echo '$FLINK_MANAGER_SETTING'
-    - echo $FLINK_MANAGER_SETTING
+    # - NEW_JARID=$(curl -X POST -H "Expect:" -F "jarfile=@./target/mysqlcdc-elasticsearch-1.0-SNAPSHOT.jar" $FLINK_CLUSTER/jars/upload  | jq -r '.filename' | awk -F/ '{print $NF}')
+    # - echo $NEW_JARID
+    # - UPDATED_FLINK_MANAGER_SETTING=$(echo $FLINK_MANAGER_SETTING | jq --arg new_jar_id "$NEW_JARID" '.flink_config.jar_id = $new_jar_id')
+    # - aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string "$UPDATED_FLINK_MANAGER_SETTING"
+    - NEW_JARID="testjar"
+    - UPDATED_FLINK_MANAGER_SETTING=$(echo $FLINK_MANAGER_SETTING | jq --arg new_jar_id "$NEW_JARID" '.flink_config.jar_id = $new_jar_id')
+    - echo $UPDATED_FLINK_MANAGER_SETTING
