@@ -16,7 +16,8 @@ package and update jar:
       unzip awscliv2.zip && \
       ./aws/install
   script:
-    - mvn clean package
-    - jarid=$(curl -X POST -H "Expect:" -F "jarfile=@./target/mysqlcdc-elasticsearch-1.0-SNAPSHOT.jar" $FLINK_CLUSTER/jars/upload  | jq -r '.filename' | awk -F/ '{print $NF}')
-    - echo $jarid
-    - eval aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string "$FLINK_MANAGER_SETTING"
+    # - mvn clean package
+    # - jarid=$(curl -X POST -H "Expect:" -F "jarfile=@./target/mysqlcdc-elasticsearch-1.0-SNAPSHOT.jar" $FLINK_CLUSTER/jars/upload  | jq -r '.filename' | awk -F/ '{print $NF}')
+    # - echo $jarid
+    - jarid="testjar"
+    - eval aws secretsmanager put-secret-value --secret-id $SECRET_NAME --secret-string '$FLINK_MANAGER_SETTING'
