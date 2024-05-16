@@ -6,7 +6,7 @@ package and update jar:
     - docker
   when: manual
   stage: package and update jar
-  image: openjdk:11-jdk
+  image: maven:3.8.6-openjdk-11
   variables:
     AWS_DEFAULT_REGION: ap-northeast-1
   before_script:
