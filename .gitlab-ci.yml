@@ -1,11 +1,11 @@
 stages:
-  - package and update jar
+  - package and deploy
 
-package and update jar:
+package and deploy:
   tags:
     - docker
   when: manual
-  stage: package and update jar
+  stage: package and deploy
   image: maven:3.8.6-openjdk-11
   variables:
     AWS_DEFAULT_REGION: ap-northeast-1
