@@ -3,7 +3,7 @@ stages:
 
 package and deploy:
   tags:
-    - docker
+    - dind-runner
   when: manual
   stage: package and deploy
   image: maven:3.8.6-openjdk-11
